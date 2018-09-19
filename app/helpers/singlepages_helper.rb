@@ -1,0 +1,2 @@
+module SinglepagesHelper
+end
