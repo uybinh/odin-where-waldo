@@ -2,9 +2,10 @@
   <h1>Where Waldo</h1>
 </header>
 
-
-<div class="container">
-  <div id='canvas'>
-    <%= image_tag 'level-1.jpg', id: 'puzzle' %>
-  </div>
-</div>
+<ul>
+<% @levels.each do |level| %>
+  <li>
+  <%= link_to level.name, level_path(level) %>
+  </li>
+<% end %>
+</ul>
