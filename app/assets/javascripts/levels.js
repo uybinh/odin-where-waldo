@@ -1,4 +1,8 @@
 document.addEventListener("turbolinks:load", () => {
+  app()
+})
+
+function app() {
   const canvas = document.querySelector("#canvas")
   if (canvas) {
     canvas.addEventListener("click", event => {
@@ -7,7 +11,7 @@ document.addEventListener("turbolinks:load", () => {
       console.log(pos)
     })
   }
-})
+}
 
 function getPosition(element, event) {
   const rect = element.getBoundingClientRect()
