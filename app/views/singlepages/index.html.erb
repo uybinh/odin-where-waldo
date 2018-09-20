@@ -1,11 +1,12 @@
 <header>
   <h1>Where Waldo</h1>
 </header>
-
-<ul>
-<% @levels.each do |level| %>
-  <li>
-  <%= link_to level.name, level_path(level) %>
-  </li>
-<% end %>
-</ul>
+<nav>
+  <ul>
+  <% @levels.each do |level| %>
+    <li>
+    <%= link_to level.name, level_path(level) %>
+    </li>
+  <% end %>
+  </ul>
+</nav>
