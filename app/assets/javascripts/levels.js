@@ -43,7 +43,7 @@ function fetchKey() {
 
 function setFinalTarget(canvas, key) {
   const target = document.createElement("div")
-  target.classList = "target-box selected"
+  target.classList = "target-box final"
   target.style.top = (key.from.y + key.to.y) / 2 + "px"
   target.style.left = (key.from.x + key.to.x) / 2 + "px"
   canvas.appendChild(target)

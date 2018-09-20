@@ -21,12 +21,20 @@ header {
   position: absolute;
   top: 0;
   left: 0;
-
   border: 3px solid red;
   border-radius: 5px;
   background: rgba(255, 0, 0, 0.07);
-  transform: translate(-50%, -50%)
+  transform: translate(-50%, -50%);
+
+  &.final {
+    display: block;
+    width: 40px;
+    height: 60px;
+    border: 3px solid greenyellow;
+    background: rgba(172, 255, 47, 0.171);
+  }
 }
+
 
 #target {
   width: 40px;
