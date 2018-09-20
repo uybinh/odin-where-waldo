@@ -6,11 +6,18 @@ async function app() {
   const canvas = document.querySelector("#canvas")
 
   if (canvas) {
-    const key = await fetchKey().then(saveKeyToStorage)
-    canvas.addEventListener("click", event => {
-      const pos = moveTargetTo(getPosition(canvas, event))
-      checkPosition(pos, key)
-    })
+    await fetchKey().then(saveKeyToStorage)
+    canvas.addEventListener("click", handleClick)
+  }
+}
+
+const handleClick = event => {
+  const key = JSON.parse(window.localStorage.getItem("key"))
+  const pos = moveTargetTo(getPosition(canvas, event))
+  if (checkPosition(pos, key)) {
+    setFinalTarget(canvas, key)
+    document.querySelector("#target").style.display = "none"
+    canvas.removeEventListener("click", handleClick)
   }
 }
 
