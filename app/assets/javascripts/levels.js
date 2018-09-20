@@ -8,9 +8,7 @@ async function app() {
   if (canvas) {
     const key = await fetchKey().then(saveKeyToStorage)
     canvas.addEventListener("click", event => {
-      const pos = getPosition(canvas, event)
-      selectTarget(pos)
-      console.log(pos)
+      const pos = moveTargetTo(getPosition(canvas, event))
       checkPosition(pos, key)
     })
   }
@@ -23,11 +21,12 @@ function getPosition(element, event) {
   return { x: posX, y: posY }
 }
 
-function selectTarget(pos) {
+function moveTargetTo(pos) {
   const target = newTarget()
   target.style.display = "block"
   target.style.top = pos.y + "px"
   target.style.left = pos.x + "px"
+  return pos
 }
 
 function newTarget() {
