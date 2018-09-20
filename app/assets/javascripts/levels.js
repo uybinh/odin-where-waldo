@@ -29,23 +29,24 @@ function getPosition(element, event) {
 }
 
 function moveTargetTo(pos) {
-  const target = newTarget()
+  const target = document.querySelector("#target")
   target.style.display = "block"
   target.style.top = pos.y + "px"
   target.style.left = pos.x + "px"
   return pos
 }
 
-function newTarget() {
-  const target =
-    document.querySelector("#target") || document.createElement("div")
-  target.id = "target"
-  return target
-}
-
 function fetchKey() {
   url = window.location.href + ".json"
   return fetch(url).then(res => res.json())
+}
+
+function setFinalTarget(canvas, key) {
+  const target = document.createElement("div")
+  target.classList = "target-box selected"
+  target.style.top = (key.from.y + key.to.y) / 2 + "px"
+  target.style.left = (key.from.x + key.to.x) / 2 + "px"
+  canvas.appendChild(target)
 }
 
 const saveKeyToStorage = key => {
@@ -60,6 +61,6 @@ const checkPosition = (pos, key) => {
     pos.y > key.from.y &&
     pos.y < key.to.y
   ) {
-    alert("greate")
+    return true
   }
 }
