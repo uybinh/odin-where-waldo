@@ -12,6 +12,6 @@
 //
 //= require rails-ujs
 //= require activestorage
-//= require turbolinks
+// require turbolinks // Don't use turbolink
 //= require cable
 //= require_tree ./global
