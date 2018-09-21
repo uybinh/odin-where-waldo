@@ -1,9 +1,11 @@
 <header>
   <h1>Where Waldo</h1>
+
 </header>
 
 <div class="container">
   <div id='canvas'>
+    <div id="timer"></div>
     <%= image_tag "level-#{@level.id}.jpg" %>
     <div class="target-box" id="target"> </div>
   </div>
