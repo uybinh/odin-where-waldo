@@ -1,0 +1,4 @@
+const ranking = document.querySelector('#ranking')
+ranking.innerHTML = ''
+ranking.innerHTML = "<%= escape_javascript(render 'players/ranking') %>"
+document.forms[0].reset()

@@ -83,6 +83,8 @@ const Timer = (function() {
     timer = setInterval(() => {
       curTime = Math.floor((new Date().getTime() - oldTime) / 1000)
       document.querySelector("#timer").innerHTML = "Time: " + curTime
+      document.querySelector("#player_score").value = curTime
+      document.querySelector("#display_score").innerHTML = curTime
     }, 1000)
   }
 
