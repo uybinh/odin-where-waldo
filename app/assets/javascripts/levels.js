@@ -7,14 +7,20 @@ async function app() {
 
   if (canvas) {
     await fetchKey().then(saveKeyToStorage)
+
     canvas.addEventListener("click", handleClick)
   }
 }
 
 const handleClick = event => {
+  if (!Timer.isStart()) {
+    Timer.start()
+  }
   const key = JSON.parse(window.localStorage.getItem("key"))
   const pos = moveTargetTo(getPosition(canvas, event))
   if (checkPosition(pos, key)) {
+    Timer.stop()
+    console.log(Timer.getTime())
     setFinalTarget(canvas, key)
     document.querySelector("#target").style.display = "none"
     canvas.removeEventListener("click", handleClick)
@@ -64,3 +70,34 @@ const checkPosition = (pos, key) => {
     return true
   }
 }
+
+const Timer = (function() {
+  let oldTime = 0
+  let curTime = 0
+  let timer = null
+  let $isStart = false
+
+  function start() {
+    $isStart = true
+    oldTime = new Date().getTime()
+    timer = setInterval(() => {
+      curTime = Math.floor((new Date().getTime() - oldTime) / 1000)
+      document.querySelector("#timer").innerHTML = "Time: " + curTime
+    }, 1000)
+  }
+
+  function stop() {
+    clearInterval(timer)
+    $isStart = false
+  }
+
+  function getTime() {
+    return curTime
+  }
+
+  function isStart() {
+    return $isStart
+  }
+
+  return { start, stop, getTime, isStart }
+})()
